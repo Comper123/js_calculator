@@ -24,8 +24,10 @@ function add(elem) {
         if (elem == calc.value.slice(-1)){
             calc.value += "";
         } else {
+            if (calc.value !== "-"){
             calc.value = calc.value.slice(0, -1)
             calc.value += elem
+            }
         }
     } else {
         calc.value += elem;
