@@ -1,12 +1,14 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap'); */
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
+    /* font-family: "Orbitron", sans-serif; */
 }
 
 :root{
-    --calc-color: rgb(209, 209, 209);
+    --calc-color: rgb(248, 248, 248);
     --btn-color: rgb(10, 65, 82);
     --bg: rgb(90, 168, 219);
 }
@@ -24,8 +26,10 @@ body{
     display: flex;
     flex-direction: column;
     width: 300px;
-    height: 600px;
+    height: 500px;
     border-radius: 20px;
+    position: relative;
+    background-color: white;
     >div{
         width: 100%;
     }
@@ -59,6 +63,10 @@ body{
         outline: none;
     }
 }
+.results{
+    display: flex;
+    flex-direction: column;
+}
 .buttons{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -91,4 +99,65 @@ body{
             }
         }
     }
+}
+.btn_change{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    top: 10px;
+    left: 10px;
+    transition: .6s;
+
+    &:hover{
+        transition: .6s;
+        background-color: #c4c1c1;
+    }
+}
+.history{
+    display: none;
+    width: 80%;
+    padding-top: 75px;
+    height: 400px;
+    background-color: white;
+    border-radius: 20px;
+    overflow: auto;
+    flex-direction: column;
+    padding: 0 20px;
+    margin-top: 75px;
+    >a{
+        width: 100%;
+        border-radius: 10px;
+        background-color: rgb(240, 240, 240);
+        transition: .6s;
+        padding: 5px;
+        margin-bottom: 10px;
+
+        &:hover{
+            transition: .6s;
+            background-color: #c4c1c1;
+        }
+
+        >p:nth-child(1){
+            color: rgb(116, 116, 116);
+            font-size: 14px;
+            font-weight: 600;
+            padding: 4px 0 4px 4px;
+        }
+        >p:nth-child(2){
+            font-size: 18px;
+            padding: 0 0 4px 4px;
+            font-weight: 600;
+        }
+    }
+}
+
+#no_history{
+    width: 100%;
+    text-align: center;
+    margin-top: 180px;
+    color: rgb(116, 116, 116);
+    font-weight: 600;
+    font-size: 20px;
 }

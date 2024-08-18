@@ -7,14 +7,19 @@
     <link rel="website icon" type="png" href="calc.png">
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
+    <script src="https://kit.fontawesome.com/920a23c733.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="calc">
-        <div>
+        <button id="btn_change" class="btn_change" onclick="openHistory()"><i class='fa-solid fa-list'></i></button>
+        <div class="history" id="history">
+            <p id="no_history">История пуста...</p>
+        </div>
+        <div id="results">
             <input type="text" id="last_calc" readonly>
             <input type="text" id="calc" readonly>
         </div>
-        <div class="buttons">
+        <div class="buttons" id="buttons">
             <div><input type="button" value="C" onclick="clr()"></div>
             <div><input type="button" value="CE" onclick="clear_elem()"></div>
             <div><input type="button" value="%" onclick="add('%')"></div>
@@ -35,6 +40,6 @@
             <div><input type="button" value="." onclick="add('.')"></div>
             <div><input type="button" value="=" onclick="calc()"></div>
         </div>
-    </div>
+    </button>
 </body>
 </html>
