@@ -1,4 +1,5 @@
 const actions = ['/', '%', '*', '-', '+', '.'];
+const digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 var history = [];
 var is_history = false;
 var is_no_calc = false;
@@ -17,28 +18,51 @@ function clear_elem() {
     }
 }
 
+// function v1
+// function add(elem) {
+//     var calc = document.getElementById('calc');
+//     if (calc.value == "Error" || (calc.value == "" && actions.includes(elem) && elem !== "-")) {
+//         calc.value = "";
+//         return;
+//     }
+//     if (actions.includes(elem) && actions.includes(calc.value.slice(-1))){
+//         if (elem == calc.value.slice(-1)){
+//                 calc.value += "";
+//         } else {
+//             if (calc.value !== "-"){
+//                 calc.value = calc.value.slice(0, -1);
+//                 calc.value += elem;
+//             }
+//             // if (elem === "-" && !actions.includes(calc.value.slice(-2))) {
+//             //     calc.value += elem;
+//             //     return
+//             // }
+//         }
+//     } else {
+//         calc.value += elem;
+//     }
+// }
+
+// function v2
 function add(elem) {
     var calc = document.getElementById('calc');
-    if (calc.value == "Error" || (calc.value == "" && actions.includes(elem) && elem !== "-")) {
+    // Ничего не делаем при попытке после ошибки знак || при попытке первого знака но не '-'  || два минуса подряд || минус после точки
+    if (((calc.value == "" || calc.value === " Error") && actions.includes(elem) && elem !== "-") || +
+        (elem == "-" && (calc.value.slice(-1) == "-" || calc.value.slice(-1) == "."))) {                                                       
+        calc.value += "";
+    } else if (calc.value === 'Error') {
         calc.value = "";
-        return;
-    }
-    if (actions.includes(elem) && actions.includes(calc.value.slice(-1))){
-        if (elem == calc.value.slice(-1)){
-                calc.value += "";
-        } else {
-            if (calc.value !== "-"){
-                calc.value = calc.value.slice(0, -1);
-                calc.value += elem;
-            }
-            // if (elem === "-" && !actions.includes(calc.value.slice(-2))) {
-            //     calc.value += elem;
-            //     return
-            // }
+        calc.value += elem;
+    } else if (actions.includes(calc.value.slice(-1)) && actions.includes(elem)) { // после знака не минус - меняем на другой
+        if (actions.includes(calc.value.slice(-1)) && actions.includes(elem) && calc.value.slice(-1) === "-") {
+            return;
         }
+        calc.value = calc.value.slice(0, -1);
+        calc.value += elem;
     } else {
         calc.value += elem;
     }
+
 }
 
 function calc() {
